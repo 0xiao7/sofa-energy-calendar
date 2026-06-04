@@ -1,0 +1,17 @@
+# Cloudflare Workers 設定檔
+# 部署前請先建立 KV namespace 並把 id 填到下方。
+#
+#   npx wrangler kv namespace create SHARES
+#   -> 把回傳的 id 貼到 [[kv_namespaces]] 的 id
+
+name = "one-time-share"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+# 一次性內容存放區（看過即刪）
+[[kv_namespaces]]
+binding = "SHARES"
+id = "PUT_YOUR_KV_NAMESPACE_ID_HERE"
+
+# SHARE_SECRET 不要寫在這裡，改用：
+#   npx wrangler secret put SHARE_SECRET
